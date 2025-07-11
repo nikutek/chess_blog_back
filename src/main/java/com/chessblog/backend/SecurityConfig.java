@@ -11,12 +11,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers("/h2-console/**", "/games/create").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin()
             .and()
-            .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
+            .csrf(csrf -> csrf
+                .ignoringRequestMatchers("/h2-console/**", "/games/create")
+            )
             .headers(headers -> headers.frameOptions().disable());
         return http.build();
     }
