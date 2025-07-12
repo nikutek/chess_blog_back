@@ -1,5 +1,6 @@
 package com.chessblog.backend.game;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +22,13 @@ public class GameController {
         return gameService.createGame(title);
     }
 
-    @PostMapping("/addMove")
-    public Game addMove(@RequestParam Long gameId, @RequestParam String move, @RequestParam String fen, @RequestParam String explanation) {
+    @PostMapping("/{gameId}/addMove")
+    public Game addMove(
+        @PathVariable Long gameId,
+        @RequestParam String move,
+        @RequestParam String fen,
+        @RequestParam String explanation
+    ) {
         Move newMove = new Move();
         newMove.setMove(move);
         newMove.setFen(fen);

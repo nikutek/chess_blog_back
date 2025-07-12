@@ -36,6 +36,7 @@ public class Game {
 
 
     public void addMove(Move move){
+        move.setGame(this);
         moves.add(move);
     }
 

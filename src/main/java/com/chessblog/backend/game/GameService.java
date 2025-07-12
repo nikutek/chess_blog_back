@@ -25,8 +25,7 @@ public class GameService {
     public Game addMoveToGame(Long gameId, Move move) {
         Game game = gameRepository.findById(gameId)
                 .orElseThrow(() -> new IllegalArgumentException("Game not found with id: " + gameId));
-        move.setGame(game);
-        game.addMove(move);
+        game.addMove(move); // This sets the game reference
         return gameRepository.save(game);
     }
 
