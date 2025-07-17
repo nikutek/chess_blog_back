@@ -17,7 +17,7 @@ public class SecurityConfig {
             .formLogin()
             .and()
             .csrf(csrf -> csrf
-                .ignoringRequestMatchers("/h2-console/**", "/games/create", "/games/*/addMove")
+                .ignoringRequestMatchers("/h2-console/**", "/games/**")
             )
             .headers(headers -> headers.frameOptions().disable());
         return http.build();

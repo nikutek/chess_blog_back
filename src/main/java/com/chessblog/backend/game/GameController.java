@@ -1,16 +1,14 @@
 package com.chessblog.backend.game;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.chessblog.backend.move.Move;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/games")
 public class GameController {
     private final GameService gameService;
@@ -19,7 +17,14 @@ public class GameController {
         this.gameService = gameService;
     }
 
+    @GetMapping
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<List<Game>> getGames() {
+        return gameService.getAllGames();
+    }
+
     @GetMapping("/{gameId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Game> getGame(@PathVariable Long gameId) {
         return gameService.getGameById(gameId)
         .map(ResponseEntity::ok)

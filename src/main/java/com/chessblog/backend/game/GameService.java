@@ -1,7 +1,9 @@
 package com.chessblog.backend.game;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.chessblog.backend.move.Move;
@@ -31,6 +33,11 @@ public class GameService {
                 .orElseThrow(() -> new IllegalArgumentException("Game not found with id: " + gameId));
         game.addMove(move); // This sets the game reference
         return gameRepository.save(game);
+    }
+
+    public ResponseEntity<List<Game>> getAllGames() {
+        List<Game> games = gameRepository.findAll();
+        return ResponseEntity.ok(games);
     }
 
     public Optional<Game> getGameById(Long gameId) {
