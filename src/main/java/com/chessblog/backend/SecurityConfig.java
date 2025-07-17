@@ -11,7 +11,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/h2-console/**", "/games/create", "/games/*/addMove").permitAll()
+                .requestMatchers("/h2-console/**", "/games/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin()

@@ -1,10 +1,14 @@
 package com.chessblog.backend.game;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.chessblog.backend.move.Move;
 
 import jakarta.transaction.Transactional;
+
+// co to DTO i dlaczego powinienem tego uzywac?
 
 @Service
 public class GameService {
@@ -29,4 +33,8 @@ public class GameService {
         return gameRepository.save(game);
     }
 
+    public Optional<Game> getGameById(Long gameId) {
+        return gameRepository.findById(gameId);
+    }
+    
 }

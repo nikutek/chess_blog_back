@@ -1,6 +1,7 @@
 package com.chessblog.backend.move;
 
 import com.chessblog.backend.game.Game;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,12 +18,13 @@ public class Move{
 
     @ManyToOne
     @JoinColumn(name = "game_id")
+    @JsonBackReference
     private Game game;
 
     private String move;
     private String explanation;
     private String fen;
-
+    
     public void setGame(Game game) {
         this.game = game;
     }
@@ -30,6 +32,7 @@ public class Move{
     public void setId(Long id) {
         this.id = id;
     }
+    
 
     public void setMove(String move) {
         this.move = move;
@@ -47,6 +50,26 @@ public class Move{
     public String toString() {
         return "Move [id=" + id + ", game=" + game + ", move=" + move + ", explanation=" + explanation + ", fen=" + fen
                 + "]";
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public String getMove() {
+        return move;
+    }
+
+    public String getExplanation() {
+        return explanation;
+    }
+
+    public String getFen() {
+        return fen;
     }
 
     
