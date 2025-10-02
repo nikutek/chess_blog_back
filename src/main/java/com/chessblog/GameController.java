@@ -27,6 +27,12 @@ public class GameController {
     public void addGame(@RequestBody Game game){
         gameService.insertGame(game);
     }
+    @PostMapping("{id}/moves")
+    public void addMove(@PathVariable int id, @RequestBody Move move){
+        Game game = gameService.getGameById(id);
+        game.addMove(move);
+        gameService.insertGame(game);
+    }
 
     @PutMapping("{id}")
     public void updateGame(@PathVariable Integer id, @RequestBody Game game){
