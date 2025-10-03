@@ -16,9 +16,8 @@ public class GameService {
         this.gameDTOMapper = new GameDTOMapper();
     }
 
-    public List<GameDTO> getGames(){
-        return gameRepository.findAll()
-                .stream().map(gameDTOMapper).collect(Collectors.toList());
+    public List<Game> getGames(){
+        return gameRepository.findAll();
     }
 
     public void insertGame(Game game) {
@@ -26,7 +25,8 @@ public class GameService {
     }
 
     public Game getGameById(Integer id) {
-        return gameRepository.findById(id).orElseThrow(() -> new IllegalStateException(id + "not found"));
+        return gameRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException(id + "not found"));
     }
 
     public void editGame(Integer id, Game game) {
