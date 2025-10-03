@@ -4,17 +4,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GameService {
-    private GameRepository gameRepository;
+    private final GameRepository gameRepository;
+    private final GameDTOMapper gameDTOMapper;
 
     public GameService(GameRepository gameRepository) {
         this.gameRepository = gameRepository;
+        this.gameDTOMapper = new GameDTOMapper();
     }
 
-    public List<Game> getGames(){
-        return gameRepository.findAll();
+    public List<GameDTO> getGames(){
+        return gameRepository.findAll()
+                .stream().map(gameDTOMapper).collect(Collectors.toList());
     }
 
     public void insertGame(Game game) {

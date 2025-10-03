@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer game_id;
+    private Integer gameID;
     private String name;
 
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -37,11 +37,11 @@ public class Game {
     }
 
     public Integer getId() {
-        return game_id;
+        return gameID;
     }
 
     public void setId(Integer id) {
-        this.game_id = id;
+        this.gameID = id;
     }
 
     public void addMove(Move move){
@@ -55,15 +55,23 @@ public class Game {
         move.setGame(null);
     }
 
+    public List<Move> getMoves() {
+        return moves;
+    }
+
+    public void setMoves(List<Move> moves) {
+        this.moves = moves;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Game game = (Game) o;
-        return Objects.equals(game_id, game.game_id) && Objects.equals(name, game.name);
+        return Objects.equals(gameID, game.gameID) && Objects.equals(name, game.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(game_id, name);
+        return Objects.hash(gameID, name);
     }
 }
