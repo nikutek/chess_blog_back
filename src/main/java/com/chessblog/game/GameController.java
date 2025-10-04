@@ -1,9 +1,12 @@
-package com.chessblog;
+package com.chessblog.game;
 
+import com.chessblog.Move;
+import com.chessblog.game.dto.GameDTO;
+import com.chessblog.game.dto.GameDTOMapper;
+import com.chessblog.game.dto.GameUpdateDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -30,25 +33,16 @@ public class GameController {
 
     @PostMapping
     public void addGame(@RequestBody Game game){
-        gameService.insertGame(game);
+        gameService.createGame(game);
     }
     @PostMapping("{id}/moves")
     public void addMove(@PathVariable int id, @RequestBody Move move){
-        Game game = gameService.getGameById(id);
-        game.addMove(move);
-        gameService.insertGame(game);
+        gameService.addMoveToGame(id, move);
     }
 
     @PatchMapping("{id}")
-    public void updateGame(@PathVariable Integer id, @RequestBody Map<String, Object> updates){
-        Game game = gameService.getGameById(id);
-        if (updates.containsKey("name")){
-            game.setName(updates.get("name").toString());
-        }
-        if(updates.containsKey("moves")){
-            game.setMoves((List<Move>) updates.get("moves"));
-        }
-        gameService.insertGame(game);
+    public void updateGame(@PathVariable Integer id, @RequestBody GameUpdateDTO dto){
+        gameService.updateGameName(id, dto.name());
     }
 
 

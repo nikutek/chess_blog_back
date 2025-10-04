@@ -1,5 +1,6 @@
-package com.chessblog;
+package com.chessblog.game;
 
+import com.chessblog.Move;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -19,7 +20,7 @@ public class Game {
     private List<Move> moves = new LinkedList<>();
 
     public Game(){
-        this.name = "puste";
+        this.name = "brak nazwy";
         this.moves = new LinkedList<>();
     }
 
@@ -45,7 +46,6 @@ public class Game {
     }
 
     public void addMove(Move move){
-
         this.moves.add(move);
         move.setGame(this);
     }

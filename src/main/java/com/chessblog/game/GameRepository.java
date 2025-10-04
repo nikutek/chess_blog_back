@@ -1,4 +1,4 @@
-package com.chessblog;
+package com.chessblog.game;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,11 +1,11 @@
-package com.chessblog;
+package com.chessblog.game.dto;
 
-import org.springframework.stereotype.Service;
+import com.chessblog.game.Game;
+import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
-@Service
+@Component
 public class GameDTOMapper implements Function<Game, GameDTO> {
     @Override
     public GameDTO apply(Game game) {

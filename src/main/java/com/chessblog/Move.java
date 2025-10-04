@@ -1,5 +1,6 @@
 package com.chessblog;
 
+import com.chessblog.game.Game;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
