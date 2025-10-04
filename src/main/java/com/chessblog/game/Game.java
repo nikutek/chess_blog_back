@@ -1,6 +1,6 @@
 package com.chessblog.game;
 
-import com.chessblog.Move;
+import com.chessblog.move.Move;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 

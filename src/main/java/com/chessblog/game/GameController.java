@@ -1,6 +1,6 @@
 package com.chessblog.game;
 
-import com.chessblog.Move;
+import com.chessblog.move.Move;
 import com.chessblog.game.dto.GameDTO;
 import com.chessblog.game.dto.GameDTOMapper;
 import com.chessblog.game.dto.GameUpdateDTO;

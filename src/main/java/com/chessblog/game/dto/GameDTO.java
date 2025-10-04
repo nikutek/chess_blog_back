@@ -1,6 +1,6 @@
 package com.chessblog.game.dto;
 
-import com.chessblog.Move;
+import com.chessblog.move.Move;
 
 import java.util.List;
 

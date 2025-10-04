@@ -1,6 +1,6 @@
 package com.chessblog.game;
 
-import com.chessblog.Move;
+import com.chessblog.move.Move;
 import com.chessblog.game.exceptions.GameNotFoundException;
 import org.springframework.stereotype.Service;
 
